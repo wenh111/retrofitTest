@@ -46,7 +46,7 @@ public class PagingTestActivity extends AppCompatActivity {
         PayEventPagedListAdapter payEventPagedListAdapter = new PayEventPagedListAdapter(getApplicationContext(), new ArrayList<>());
         recyclerView.setAdapter(payEventPagedListAdapter);
         String account = "456@qq.com";
-        String month = "7";
+        String month = "8";
         String year = "2022";
 
         Button button = findViewById(R.id.but_get);
@@ -56,7 +56,6 @@ public class PagingTestActivity extends AppCompatActivity {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     if (!recyclerView.canScrollVertically(1)) {
-
                         int since = pagingViewModel.getSince().getValue();
                         int perPage = pagingViewModel.getPerPage().getValue();
                         if (loadInterface != null) {
@@ -64,6 +63,7 @@ public class PagingTestActivity extends AppCompatActivity {
                         }
                         Log.i("ScrollStateChanged", "------------------->" + "到底了");
                     }
+
                 }
             }
 
@@ -80,7 +80,7 @@ public class PagingTestActivity extends AppCompatActivity {
                                     if (response.body().getPerPage() == 0) {
                                         pagingViewModel.dataLoadOver(true);
                                         payEventPagedListAdapter.setHasMore(false);
-                                    }else{
+                                    } else {
                                         payEventPagedListAdapter.setHasMore(true);
                                     }
                                     pagingViewModel.dataChange(response.body().getSince(), response.body().getPerPage());
@@ -118,7 +118,7 @@ public class PagingTestActivity extends AppCompatActivity {
                                     if (response.body().getPerPage() == 0) {
                                         pagingViewModel.dataLoadOver(true);
                                         payEventPagedListAdapter.setHasMore(false);
-                                    }else{
+                                    } else {
                                         payEventPagedListAdapter.setHasMore(true);
                                     }
                                     pagingViewModel.dataChange(response.body().getSince(), response.body().getPerPage());

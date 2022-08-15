@@ -1,9 +1,11 @@
 package com.org.retrofittest.RetrofittestPaging.PayEventModel;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -54,6 +56,11 @@ public class PayEventPagedListAdapter extends RecyclerView.Adapter<RecyclerView.
             ((PayEventViewHolder) holder).cost.setText(String.valueOf(payListDTO.getCost()));
             ((PayEventViewHolder) holder).date.setText(payListDTO.getDate());
         } else {
+            if (position == 0) {
+                ((PayEventFootHolder) holder).linearLayout.setVisibility(View.INVISIBLE);
+            } else {
+                ((PayEventFootHolder) holder).linearLayout.setVisibility(View.VISIBLE);
+            }
             if (isHasMore()) {
                 ((PayEventFootHolder) holder).textView.setText("上拉加载更多");
             } else {
@@ -88,11 +95,15 @@ public class PayEventPagedListAdapter extends RecyclerView.Adapter<RecyclerView.
 
     @Override
     public int getItemCount() {
-        return data == null ? 0 : data.size() + 1;
+        int itemCount = data == null ? 0 : data.size() + 1;
+        Log.i("ItemCount", "itemCount ====================> " + itemCount);
+        return itemCount;
     }
 
     @Override
     public int getItemViewType(int position) {
+        Log.i("ItemCount", "position ====================> " + position);
+        Log.i("ItemCount", "getItemCount() - 1 ====================> " + (getItemCount() - 1));
         if (position == getItemCount() - 1) {
             return TYPE_FOOT;
         }
@@ -115,10 +126,12 @@ public class PayEventPagedListAdapter extends RecyclerView.Adapter<RecyclerView.
 
     static class PayEventFootHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
+        private LinearLayout linearLayout;
 
         public PayEventFootHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.text_view);
+            linearLayout = itemView.findViewById(R.id.linearLayout);
         }
     }
 
