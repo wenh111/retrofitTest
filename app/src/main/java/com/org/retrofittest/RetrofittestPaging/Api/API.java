@@ -23,5 +23,6 @@ public interface API {
                                    @Query("year") String year,
                                    @Query("month") String month,
                                    @Query("since") int since,
-                                   @Query("perPages") int perPages);
+                                   @Query("perPages") int perPages,
+                                   @Query("category") String category);
 }

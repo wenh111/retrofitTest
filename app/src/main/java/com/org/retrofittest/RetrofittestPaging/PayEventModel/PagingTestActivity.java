@@ -48,7 +48,7 @@ public class PagingTestActivity extends AppCompatActivity {
         String account = "456@qq.com";
         String month = "8";
         String year = "2022";
-
+        String category = "";
         Button button = findViewById(R.id.but_get);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -70,7 +70,7 @@ public class PagingTestActivity extends AppCompatActivity {
         });
         setLoadInterface((since, perPage) -> {
             if (!pagingViewModel.getIsOver().getValue()) {
-                RetrofitClient.getInstance().getApi().getPayEvent(account, year, month, since, perPage)
+                RetrofitClient.getInstance().getApi().getPayEvent(account, year, month, since, perPage,category)
                         .enqueue(new Callback<PayEventBean>() {
                             @SuppressLint("NotifyDataSetChanged")
                             @Override
@@ -108,7 +108,7 @@ public class PagingTestActivity extends AppCompatActivity {
             public void onClick(View view) {
                 recyclerView.setVisibility(View.VISIBLE);
                 pagingViewModel.dataLoadOver(false);
-                RetrofitClient.getInstance().getApi().getPayEvent(account, year, month, -1, -1)
+                RetrofitClient.getInstance().getApi().getPayEvent(account, year, month, -1, -1,category)
                         .enqueue(new Callback<PayEventBean>() {
                             @SuppressLint("NotifyDataSetChanged")
                             @Override
