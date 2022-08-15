@@ -56,7 +56,7 @@ public class PagingTestActivity extends AppCompatActivity {
                 super.onScrollStateChanged(recyclerView, newState);
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     if (!recyclerView.canScrollVertically(1)) {
-                        //Toast.makeText(getApplicationContext(),"到底了",Toast.LENGTH_SHORT).show();
+
                         int since = pagingViewModel.getSince().getValue();
                         int perPage = pagingViewModel.getPerPage().getValue();
                         if (loadInterface != null) {
