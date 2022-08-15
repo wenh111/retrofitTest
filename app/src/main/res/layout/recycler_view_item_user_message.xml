@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:text="蕉蕉"
+        android:gravity="center"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/account"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+
+        android:text="蕉蕉"
+        android:gravity="center"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/password"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+
+        android:text="蕉蕉"
+        android:gravity="center"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/telephoneNumber"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+
+        android:text="蕉蕉"
+        android:gravity="center"
+        android:textColor="@color/black"/>
+
+</LinearLayout>
